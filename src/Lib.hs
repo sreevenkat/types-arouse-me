@@ -19,12 +19,14 @@ echoCallback req =
     Server.stringResponse (Server.requestBody req)
 
 getNumberWord :: String -> String
-getNumberWord num = 
-    case num of
-        "1" -> "one"
-        "2" -> "two"
-        "3" -> "three"
+getNumberWord numStr = 
+    case (Debug.traceShowId numInt) of
+        1 -> "one"
+        2 -> "two"
+        3 -> "three"
         _ -> "whoops"
+    where
+        numInt = read numStr :: Int
 
 caseMatchCallback :: Server.Request -> Server.Response
 caseMatchCallback req = 
